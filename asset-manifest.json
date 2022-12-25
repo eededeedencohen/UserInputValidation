@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/UserInputValidation/static/css/main.275eca3b.css",
-    "main.js": "/UserInputValidation/static/js/main.0dd485b9.js",
+    "main.js": "/UserInputValidation/static/js/main.2419b972.js",
     "index.html": "/UserInputValidation/index.html",
     "main.275eca3b.css.map": "/UserInputValidation/static/css/main.275eca3b.css.map",
-    "main.0dd485b9.js.map": "/UserInputValidation/static/js/main.0dd485b9.js.map"
+    "main.2419b972.js.map": "/UserInputValidation/static/js/main.2419b972.js.map"
   },
   "entrypoints": [
     "static/css/main.275eca3b.css",
-    "static/js/main.0dd485b9.js"
+    "static/js/main.2419b972.js"
   ]
 }
