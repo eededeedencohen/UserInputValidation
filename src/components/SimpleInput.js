@@ -79,7 +79,7 @@ const SimpleInput = (props) => {
         )}
       </div>
       <div className={emailInputClasses}>
-        <label htmlFor='email'>Your E-Mail!</label>
+        <label htmlFor='email'>Your E-Mail!!!!</label>
         <input
           type='email'
           id='email'
@@ -88,7 +88,7 @@ const SimpleInput = (props) => {
           value={enteredEmail}
         />
         {enteredEmailIsInvalid && (
-          <p className='error-text'>Please enter a valid email.</p>
+          <p className='error-text'>Please enter a valid email!!!.</p>
         )}
       </div>
       <div className='form-actions'>
