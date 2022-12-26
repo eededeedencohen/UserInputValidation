@@ -1,31 +1,52 @@
 /*===========================================
- this hook manage the value of the given input, 
- the touch state, infer its validity.
+Now I using useReducer instead of useState
  ===========================================*/
-import { useState } from "react";
+import { useReducer } from "react";
+
+const initialInputState = {
+  value: '',
+  isTouched: false,
+};
+
+// Reducer
+const inputStateReducer = (state, action) => {
+  if (action.type === 'INPUT') {
+    return {value: action.value, isTouched: state.isTouched};// same as {value: action.value, isTouched: isTouched}
+  }
+
+  if(action.type === 'BLUR') {
+    return {isTouched: true, value: state.value};// same as {isTouched: true, value: value}
+  }
+  if(action.type === 'RESET') {
+    return {value:'', isTouched:false};// same as {value:'', isTouched:false}
+  }
+  return initialInputState;
+};
+
 
 const useInput = (validateValue) => {
-  const [enteredValue, setEnteredValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
+  const [inputState,dispatch] = useReducer(inputStateReducer, initialInputState);
 
-  const valueIsValid = validateValue(enteredValue);
-  const hasError = !valueIsValid && isTouched;
 
+  const valueIsValid = validateValue(inputState.value);
+  const hasError = !valueIsValid && inputState.isTouched;
+
+  // const [enteredValue, setEnteredValue] = useState("");
   const valueChangeHandler = (event) => {
-    setEnteredValue(event.target.value);
+    dispatch({type:'INPUT', value:event.target.value});
   };
 
+  // const [isTouched, setIsTouched] = useState(false);
   const inputBlurHandler = (event) => {
-    setIsTouched(true);
+    dispatch({type:'BLUR'});
   };
 
   const reset = () => {
-    setEnteredValue("");
-    setIsTouched(false);
+    dispatch({'TYPE':'RESET'})
   };
 
   return {
-    value: enteredValue,
+    value: inputState.value,
     hasError, // same as haeError: haeError
     isValid:valueIsValid,
     valueChangeHandler,  
